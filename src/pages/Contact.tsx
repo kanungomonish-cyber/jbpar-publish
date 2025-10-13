@@ -1,10 +1,66 @@
+import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Mail, Phone, MapPin, Clock } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import { Mail, Phone, MapPin, Clock, Send } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FloatingActions from "@/components/FloatingActions";
 
 const Contact = () => {
+  const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  // Google Apps Script Web App URL - Replace with your deployed script URL
+  const GOOGLE_SCRIPT_URL = "YOUR_GOOGLE_APPS_SCRIPT_URL_HERE";
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    const formData = new FormData(e.currentTarget);
+    const data = {
+      name: formData.get('name'),
+      phone: formData.get('phone'),
+      email: formData.get('email'),
+      subject: formData.get('subject'),
+      message: formData.get('message'),
+      timestamp: new Date().toISOString()
+    };
+
+    try {
+      // Submit to Google Sheets via Apps Script
+      const response = await fetch(GOOGLE_SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data)
+      });
+
+      toast({
+        title: "Message Sent Successfully",
+        description: "Thank you for contacting us. We will respond within 24-48 hours.",
+      });
+
+      // Reset form
+      (e.target as HTMLFormElement).reset();
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      toast({
+        title: "Submission Error",
+        description: "There was an error sending your message. Please try again or contact us directly via email.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
@@ -105,37 +161,102 @@ const Contact = () => {
               </Card>
             </div>
 
-            {/* Google Form */}
+            {/* Contact Form */}
             <div className="lg:col-span-2">
               <Card>
                 <CardHeader>
                   <CardTitle className="text-2xl">Send Us a Message</CardTitle>
                   <p className="text-muted-foreground">
-                    Fill out the form below and we'll get back to you shortly
+                    You can also send a message to us by submitting the below form.
                   </p>
                 </CardHeader>
                 <CardContent>
-                  <iframe 
-                    src="https://docs.google.com/forms/d/e/1FAIpQLSd8xqRj9yVKQXZHJN5HvRxYB3MqNzKp4wL5eT6vU7xW9yA1zQ/viewform?embedded=true"
-                    width="100%" 
-                    height="1200"
-                    frameBorder="0"
-                    marginHeight={0}
-                    marginWidth={0}
-                    className="rounded-lg"
-                  >
-                    Loading form...
-                  </iframe>
-                  
-                  {/* Note: The above iframe URL is a placeholder. For actual implementation, 
-                      create a Google Form with the required fields and replace this URL */}
-                  
-                  <div className="mt-6 p-4 bg-muted/50 rounded-lg">
-                    <p className="text-sm text-muted-foreground">
-                      <strong>Note:</strong> This form is connected to our response system. 
-                      All submissions are automatically logged and you will receive a confirmation email. 
-                      For urgent matters, please contact us directly via email or phone.
+                  <form onSubmit={handleSubmit} className="space-y-6">
+                    <div>
+                      <Label htmlFor="name">Your Name *</Label>
+                      <Input 
+                        id="name" 
+                        name="name"
+                        required 
+                        placeholder="Enter your full name"
+                        className="mt-1"
+                      />
+                    </div>
+
+                    <div>
+                      <Label htmlFor="phone">Phone Number</Label>
+                      <Input 
+                        id="phone" 
+                        name="phone"
+                        type="tel"
+                        placeholder="Enter your phone number"
+                        className="mt-1"
+                      />
+                    </div>
+
+                    <div>
+                      <Label htmlFor="email">Email Address *</Label>
+                      <Input 
+                        id="email" 
+                        name="email"
+                        type="email"
+                        required
+                        placeholder="Enter your email address"
+                        className="mt-1"
+                      />
+                    </div>
+
+                    <div>
+                      <Label htmlFor="subject">Subject *</Label>
+                      <Input 
+                        id="subject" 
+                        name="subject"
+                        required
+                        placeholder="Enter message subject"
+                        className="mt-1"
+                      />
+                    </div>
+
+                    <div>
+                      <Label htmlFor="message">Message *</Label>
+                      <Textarea 
+                        id="message" 
+                        name="message"
+                        required
+                        rows={6}
+                        placeholder="Enter your message"
+                        className="mt-1"
+                      />
+                    </div>
+
+                    <Button 
+                      type="submit" 
+                      size="lg" 
+                      className="w-full"
+                      disabled={isSubmitting}
+                    >
+                      {isSubmitting ? (
+                        <>Sending Message...</>
+                      ) : (
+                        <>
+                          <Send className="mr-2 h-5 w-5" />
+                          Send Message
+                        </>
+                      )}
+                    </Button>
+                  </form>
+
+                  <div className="mt-6 p-4 bg-amber-50 dark:bg-amber-950/20 border border-amber-200 dark:border-amber-800 rounded-lg">
+                    <p className="text-sm text-amber-900 dark:text-amber-100">
+                      <strong>Setup Required:</strong> To connect this form to your Google Sheets, you need to:
                     </p>
+                    <ol className="text-sm text-amber-800 dark:text-amber-200 mt-2 ml-4 list-decimal space-y-1">
+                      <li>Open your Google Sheet: <a href="https://docs.google.com/spreadsheets/d/1cvS9XcnXqNI1dEPyf3N0lmyv66jB68G21_oxiePt69Y/edit" target="_blank" rel="noopener noreferrer" className="underline">Click here</a></li>
+                      <li>Go to Extensions → Apps Script</li>
+                      <li>Copy and paste the provided Google Apps Script code (see documentation)</li>
+                      <li>Deploy as Web App and copy the deployment URL</li>
+                      <li>Update the GOOGLE_SCRIPT_URL in Contact.tsx with your deployment URL</li>
+                    </ol>
                   </div>
                 </CardContent>
               </Card>
