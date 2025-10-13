@@ -3,6 +3,7 @@ import { Target, Users, Globe, BookOpen, Award } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FloatingActions from "@/components/FloatingActions";
+import FloatingShapes from "@/components/FloatingShapes";
 
 const About = () => {
   const categories = [
@@ -52,7 +53,8 @@ const About = () => {
   ];
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col relative">
+      <FloatingShapes />
       <Header />
       
       {/* Hero Section */}

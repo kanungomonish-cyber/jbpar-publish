@@ -11,6 +11,7 @@ import { useToast } from "@/hooks/use-toast";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FloatingActions from "@/components/FloatingActions";
+import FloatingShapes from "@/components/FloatingShapes";
 
 const Submit = () => {
   const { toast } = useToast();
@@ -39,7 +40,8 @@ const Submit = () => {
   ];
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col relative">
+      <FloatingShapes />
       <Header />
       
       {/* Hero Section */}

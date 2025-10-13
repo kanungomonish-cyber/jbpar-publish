@@ -3,10 +3,12 @@ import { FileText, CheckCircle, AlertCircle } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FloatingActions from "@/components/FloatingActions";
+import FloatingShapes from "@/components/FloatingShapes";
 
 const Guidelines = () => {
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col relative">
+      <FloatingShapes />
       <Header />
       
       {/* Hero Section */}

@@ -9,13 +9,14 @@ import { useToast } from "@/hooks/use-toast";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FloatingActions from "@/components/FloatingActions";
+import FloatingShapes from "@/components/FloatingShapes";
 
 const Contact = () => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // Google Apps Script Web App URL - Replace with your deployed script URL
-  const GOOGLE_SCRIPT_URL = "YOUR_GOOGLE_APPS_SCRIPT_URL_HERE";
+  // Google Apps Script Web App URL
+  const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyy8W0GiQDCwHrlWLVR34PTEnd8ASWEo2V_6JaS9_FMmKlJavG9XFezPkrX8_IGvyGZ/exec";
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -62,7 +63,8 @@ const Contact = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col relative">
+      <FloatingShapes />
       <Header />
       
       {/* Hero Section */}
@@ -245,19 +247,6 @@ const Contact = () => {
                       )}
                     </Button>
                   </form>
-
-                  <div className="mt-6 p-4 bg-amber-50 dark:bg-amber-950/20 border border-amber-200 dark:border-amber-800 rounded-lg">
-                    <p className="text-sm text-amber-900 dark:text-amber-100">
-                      <strong>Setup Required:</strong> To connect this form to your Google Sheets, you need to:
-                    </p>
-                    <ol className="text-sm text-amber-800 dark:text-amber-200 mt-2 ml-4 list-decimal space-y-1">
-                      <li>Open your Google Sheet: <a href="https://docs.google.com/spreadsheets/d/1cvS9XcnXqNI1dEPyf3N0lmyv66jB68G21_oxiePt69Y/edit" target="_blank" rel="noopener noreferrer" className="underline">Click here</a></li>
-                      <li>Go to Extensions → Apps Script</li>
-                      <li>Copy and paste the provided Google Apps Script code (see documentation)</li>
-                      <li>Deploy as Web App and copy the deployment URL</li>
-                      <li>Update the GOOGLE_SCRIPT_URL in Contact.tsx with your deployment URL</li>
-                    </ol>
-                  </div>
                 </CardContent>
               </Card>
 
