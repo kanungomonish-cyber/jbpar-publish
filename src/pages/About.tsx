@@ -126,8 +126,7 @@ const About = () => {
               <h2 className="text-3xl font-bold mb-6">Scope</h2>
               <p className="text-lg leading-relaxed mb-8">
                 JBPAR welcomes contributions across a wide range of disciplines, with a focus on applied, 
-                practice-oriented, and multidisciplinary research. Areas of interest include, but are not 
-                limited to:
+                practice-oriented, and multidisciplinary research. Areas of interest include, <strong className="font-bold">but are not limited</strong> to:
               </p>
 
               <div className="space-y-6">

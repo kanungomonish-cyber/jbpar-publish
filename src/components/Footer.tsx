@@ -1,4 +1,4 @@
-import { Mail, Phone, MapPin } from "lucide-react";
+import { Mail, Phone, MapPin, Linkedin, Facebook, Instagram } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -18,6 +18,8 @@ const Footer = () => {
             <ul className="space-y-2 text-sm opacity-90">
               <li><a href="/about" className="hover:underline">Aim & Scope</a></li>
               <li><a href="/guidelines" className="hover:underline">Author Guidelines</a></li>
+              <li><a href="/current-issue" className="hover:underline">Current Issue</a></li>
+              <li><a href="/editors-reviewers" className="hover:underline">Editors & Reviewers</a></li>
               <li><a href="/submit" className="hover:underline">Submit Manuscript</a></li>
               <li><a href="/contact" className="hover:underline">Contact Us</a></li>
             </ul>
@@ -46,9 +48,42 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-primary-foreground/20 mt-8 pt-8 text-center text-sm opacity-90">
-          <p>© {new Date().getFullYear()} Journal of Business Practice and Academic Research. All rights reserved.</p>
-          <p className="mt-2">Editor: Dr. Bhawna Nigam</p>
+        <div className="border-t border-primary-foreground/20 mt-8 pt-8">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+            <div className="text-sm opacity-90">
+              <p>© {new Date().getFullYear()} Journal of Business Practice and Academic Research. All rights reserved.</p>
+              <p className="mt-1">Editorial Chief</p>
+            </div>
+            <div className="flex gap-4">
+              <a 
+                href="https://www.linkedin.com/company/journal-of-business-practice-and-academic-research-jbpar/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="hover:opacity-80 transition-opacity"
+                aria-label="LinkedIn"
+              >
+                <Linkedin className="h-5 w-5" />
+              </a>
+              <a 
+                href="https://www.facebook.com/share/1BUF2UNMad/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="hover:opacity-80 transition-opacity"
+                aria-label="Facebook"
+              >
+                <Facebook className="h-5 w-5" />
+              </a>
+              <a 
+                href="https://www.instagram.com/editor.jbpar?utm_source=qr&igsh=Nml0NzFpMG51Z29l" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="hover:opacity-80 transition-opacity"
+                aria-label="Instagram"
+              >
+                <Instagram className="h-5 w-5" />
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </footer>

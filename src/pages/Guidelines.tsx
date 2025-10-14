@@ -39,11 +39,11 @@ const Guidelines = () => {
               <CardContent className="space-y-4">
                 <div>
                   <h4 className="font-semibold mb-2">Original Research Articles</h4>
-                  <p className="text-muted-foreground">Word limit: 6,000-8,000 words (including references)</p>
+                  <p className="text-muted-foreground">Word limit: 5,000-7,000 words (including references)</p>
                 </div>
                 <div>
                   <h4 className="font-semibold mb-2">Case Studies</h4>
-                  <p className="text-muted-foreground">Word limit: 4,000-6,000 words</p>
+                  <p className="text-muted-foreground">Word limit: 5,000-7,000 words</p>
                 </div>
                 <div>
                   <h4 className="font-semibold mb-2">Review Articles</h4>
@@ -51,7 +51,7 @@ const Guidelines = () => {
                 </div>
                 <div>
                   <h4 className="font-semibold mb-2">Conceptual Papers</h4>
-                  <p className="text-muted-foreground">Word limit: 4,000-6,000 words</p>
+                  <p className="text-muted-foreground">Word limit: 5,000-7,000 words</p>
                 </div>
               </CardContent>
             </Card>
@@ -67,7 +67,7 @@ const Guidelines = () => {
                 <ul className="list-disc list-inside space-y-2 text-muted-foreground">
                   <li>File format: Microsoft Word (.doc or .docx)</li>
                   <li>Font: Times New Roman, 12-point</li>
-                  <li>Line spacing: Double-spaced throughout</li>
+                  <li>Line spacing: Single-spaced throughout</li>
                   <li>Margins: 1 inch (2.54 cm) on all sides</li>
                   <li>Page numbers: Bottom center, starting from title page</li>
                   <li>Language: English (US or UK, but consistent throughout)</li>
@@ -86,7 +86,6 @@ const Guidelines = () => {
                     <li>Article title (concise and informative)</li>
                     <li>Author names and affiliations</li>
                     <li>Corresponding author email</li>
-                    <li>ORCID iD (recommended)</li>
                   </ul>
                 </div>
                 <div>
@@ -160,7 +159,7 @@ const Guidelines = () => {
                 <ul className="list-disc list-inside space-y-2 text-muted-foreground">
                   <li>All submissions must be original and not under consideration elsewhere</li>
                   <li>Manuscripts undergo plagiarism screening using iThenticate or similar tools</li>
-                  <li>Similarity index should be below 20% (excluding references and quotes)</li>
+                  <li>Similarity index should be below 15% (excluding references and quotes)</li>
                   <li>Authors must declare any conflicts of interest</li>
                   <li>Ethical approval must be obtained for studies involving human participants</li>
                   <li>Data availability statement is encouraged</li>

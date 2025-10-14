@@ -134,7 +134,7 @@ const Index = () => {
               <Card className="border-l-4 border-l-accent hover:shadow-lg transition-shadow">
                 <CardContent className="p-6">
                   <h3 className="font-semibold text-lg mb-2">Online Publishing</h3>
-                  <p className="text-2xl font-bold text-accent">Immediate</p>
+                  <p className="text-2xl font-bold text-accent">4-6 weeks</p>
                   <p className="text-sm text-muted-foreground mt-1">(after review)</p>
                 </CardContent>
               </Card>
@@ -142,7 +142,7 @@ const Index = () => {
               <Card className="border-l-4 border-l-secondary hover:shadow-lg transition-shadow">
                 <CardContent className="p-6">
                   <h3 className="font-semibold text-lg mb-2">Author Notification</h3>
-                  <p className="text-2xl font-bold text-secondary">2 days</p>
+                  <p className="text-2xl font-bold text-secondary">2 weeks</p>
                   <p className="text-sm text-muted-foreground mt-1">of submission</p>
                 </CardContent>
               </Card>
@@ -157,8 +157,8 @@ const Index = () => {
 
               <Card className="border-l-4 border-l-accent hover:shadow-lg transition-shadow md:col-span-2 lg:col-span-2">
                 <CardContent className="p-6">
-                  <h3 className="font-semibold text-lg mb-2">E-Magazine</h3>
-                  <p className="text-xl font-bold text-accent">5<sup>th</sup> November, 2025</p>
+                  <h3 className="font-semibold text-lg mb-2">Issue Release</h3>
+                  <p className="text-xl font-bold text-accent">5<sup>th</sup> of every month</p>
                   <p className="text-sm text-muted-foreground mt-1">Digital edition release</p>
                 </CardContent>
               </Card>
