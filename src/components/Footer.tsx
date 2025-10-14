@@ -30,9 +30,14 @@ const Footer = () => {
             <div className="space-y-3 text-sm opacity-90">
               <div className="flex items-start gap-2">
                 <Mail className="h-4 w-4 mt-0.5" />
-                <a href="mailto:editor.jbpar@gmail.com" className="hover:underline">
-                  editor.jbpar@gmail.com
-                </a>
+                <div className="flex flex-col">
+                  <a href="mailto:editor.jbpar@gmail.com" className="hover:underline">
+                    editor.jbpar@gmail.com
+                  </a>
+                  <a href="mailto:editor@jbpar.org" className="hover:underline mt-0.5">
+                    editor@jbpar.org
+                  </a>
+                </div>
               </div>
               <div className="flex items-start gap-2">
                 <Phone className="h-4 w-4 mt-0.5" />
@@ -42,7 +47,9 @@ const Footer = () => {
               </div>
               <div className="flex items-start gap-2">
                 <MapPin className="h-4 w-4 mt-0.5" />
-                <span>A88, Vaibhav Nagar, Kanadia Road, Indore, MP 452017</span>
+                <a href="https://maps.app.goo.gl/opZoAzMsGF62kbUH9" target="_blank" rel="noopener noreferrer" className="hover:underline">
+                  A88, Vaibhav Nagar, Kanadia Road, Indore, MP 452017
+                </a>
               </div>
               <div className="flex gap-4 mt-4">
                 <a 
@@ -80,7 +87,6 @@ const Footer = () => {
         <div className="border-t border-primary-foreground/20 mt-8 pt-8">
           <div className="text-center text-sm opacity-90">
             <p>© {new Date().getFullYear()} Journal of Business Practice and Academic Research. All rights reserved.</p>
-            <p className="mt-1">Editorial Chief</p>
           </div>
         </div>
       </div>

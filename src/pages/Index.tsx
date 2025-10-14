@@ -123,10 +123,10 @@ const Index = () => {
             </div>
             
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              <Card className="border-l-4 border-l-primary hover:shadow-lg transition-shadow">
+              <Card className="border-l-4 border-l-accent hover:shadow-lg transition-shadow">
                 <CardContent className="p-6">
                   <h3 className="font-semibold text-lg mb-2">Submission Deadlines</h3>
-                  <p className="text-2xl font-bold text-primary">Ongoing</p>
+                  <p className="text-2xl font-bold text-accent">Ongoing</p>
                   <p className="text-sm text-muted-foreground mt-1">Submissions accepted year-round</p>
                 </CardContent>
               </Card>
@@ -139,19 +139,19 @@ const Index = () => {
                 </CardContent>
               </Card>
 
-              <Card className="border-l-4 border-l-secondary hover:shadow-lg transition-shadow">
+              <Card className="border-l-4 border-l-accent hover:shadow-lg transition-shadow">
                 <CardContent className="p-6">
                   <h3 className="font-semibold text-lg mb-2">Author Notification</h3>
-                  <p className="text-2xl font-bold text-secondary">2 weeks</p>
+                  <p className="text-2xl font-bold text-accent">2 weeks</p>
                   <p className="text-sm text-muted-foreground mt-1">of submission</p>
                 </CardContent>
               </Card>
 
-              <Card className="border-l-4 border-l-primary hover:shadow-lg transition-shadow">
+              <Card className="border-l-4 border-l-accent hover:shadow-lg transition-shadow">
                 <CardContent className="p-6">
-                  <h3 className="font-semibold text-lg mb-2">Final Issue</h3>
-                  <p className="text-xl font-bold text-primary">31<sup>st</sup> October, 2025</p>
-                  <p className="text-sm text-muted-foreground mt-1">Publication date</p>
+                  <h3 className="font-semibold text-lg mb-2">Monthly Journal</h3>
+                  <p className="text-xl font-bold text-accent">31<sup>st</sup> October, 2025</p>
+                  <p className="text-sm text-muted-foreground mt-1">monthly journal</p>
                 </CardContent>
               </Card>
 
