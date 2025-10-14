@@ -44,45 +44,43 @@ const Footer = () => {
                 <MapPin className="h-4 w-4 mt-0.5" />
                 <span>A88, Vaibhav Nagar, Kanadia Road, Indore, MP 452017</span>
               </div>
+              <div className="flex gap-4 mt-4">
+                <a 
+                  href="https://www.linkedin.com/company/journal-of-business-practice-and-academic-research-jbpar/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="hover:opacity-80 transition-opacity"
+                  aria-label="LinkedIn"
+                >
+                  <Linkedin className="h-5 w-5" />
+                </a>
+                <a 
+                  href="https://www.facebook.com/share/1BUF2UNMad/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="hover:opacity-80 transition-opacity"
+                  aria-label="Facebook"
+                >
+                  <Facebook className="h-5 w-5" />
+                </a>
+                <a 
+                  href="https://www.instagram.com/editor.jbpar?utm_source=qr&igsh=Nml0NzFpMG51Z29l" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="hover:opacity-80 transition-opacity"
+                  aria-label="Instagram"
+                >
+                  <Instagram className="h-5 w-5" />
+                </a>
+              </div>
             </div>
           </div>
         </div>
 
         <div className="border-t border-primary-foreground/20 mt-8 pt-8">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <div className="text-sm opacity-90">
-              <p>© {new Date().getFullYear()} Journal of Business Practice and Academic Research. All rights reserved.</p>
-              <p className="mt-1">Editorial Chief</p>
-            </div>
-            <div className="flex gap-4">
-              <a 
-                href="https://www.linkedin.com/company/journal-of-business-practice-and-academic-research-jbpar/" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="hover:opacity-80 transition-opacity"
-                aria-label="LinkedIn"
-              >
-                <Linkedin className="h-5 w-5" />
-              </a>
-              <a 
-                href="https://www.facebook.com/share/1BUF2UNMad/" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="hover:opacity-80 transition-opacity"
-                aria-label="Facebook"
-              >
-                <Facebook className="h-5 w-5" />
-              </a>
-              <a 
-                href="https://www.instagram.com/editor.jbpar?utm_source=qr&igsh=Nml0NzFpMG51Z29l" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="hover:opacity-80 transition-opacity"
-                aria-label="Instagram"
-              >
-                <Instagram className="h-5 w-5" />
-              </a>
-            </div>
+          <div className="text-center text-sm opacity-90">
+            <p>© {new Date().getFullYear()} Journal of Business Practice and Academic Research. All rights reserved.</p>
+            <p className="mt-1">Editorial Chief</p>
           </div>
         </div>
       </div>
