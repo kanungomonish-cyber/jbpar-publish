@@ -278,7 +278,7 @@ const Submit = () => {
               <CardContent>
                 <ul className="space-y-2 text-sm text-muted-foreground">
                   <li>• Ensure your manuscript follows the <a href="/guidelines" className="text-primary hover:underline">author guidelines</a></li>
-                  <li>• Check that similarity index is below 20%</li>
+                  <li>• Check that similarity index is below 15%</li>
                   <li>• Verify all author information is complete and accurate</li>
                   <li>• Review the peer review process and publication timeline</li>
                   <li>• You will receive an automated confirmation email upon submission</li>

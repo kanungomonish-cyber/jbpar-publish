@@ -157,8 +157,8 @@ const Contact = () => {
                   <CardTitle className="text-lg">Editor</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="font-semibold">Dr. Bhawna Nigam</p>
-                  <p className="text-sm text-muted-foreground mt-1">Editor-in-Chief</p>
+                  <p className="font-semibold">Editor-in-Chief</p>
+                  <p className="text-sm text-muted-foreground mt-1">Journal of Business Practice and Academic Research</p>
                 </CardContent>
               </Card>
             </div>

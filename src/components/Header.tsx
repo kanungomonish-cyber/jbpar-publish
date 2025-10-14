@@ -28,7 +28,7 @@ const Header = () => {
             <img 
               src={logo} 
               alt="JBPAR Logo" 
-              className="h-12 w-12 object-contain transition-transform group-hover:scale-110"
+              className="h-10 w-10 object-contain transition-transform group-hover:scale-110"
             />
             <div className="hidden md:block">
               <h1 className="text-lg font-bold text-primary">JBPAR</h1>
