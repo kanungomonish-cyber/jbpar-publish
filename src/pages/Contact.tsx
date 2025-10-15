@@ -95,12 +95,20 @@ const Contact = () => {
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <a 
-                    href="mailto:editor.jbpar@gmail.com" 
-                    className="text-primary hover:underline"
-                  >
-                    editor.jbpar@gmail.com
-                  </a>
+                  <div className="flex flex-col gap-1">
+                    <a 
+                      href="mailto:editor.jbpar@gmail.com" 
+                      className="text-primary hover:underline"
+                    >
+                      editor.jbpar@gmail.com
+                    </a>
+                    <a 
+                      href="mailto:editor@jbpar.org" 
+                      className="text-primary hover:underline"
+                    >
+                      editor@jbpar.org
+                    </a>
+                  </div>
                 </CardContent>
               </Card>
 

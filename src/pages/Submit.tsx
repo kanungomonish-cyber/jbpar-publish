@@ -126,11 +126,6 @@ const Submit = () => {
                       <Label htmlFor="affiliation">Institution/Affiliation *</Label>
                       <Input id="affiliation" required />
                     </div>
-
-                    <div>
-                      <Label htmlFor="orcid">ORCID iD (Optional)</Label>
-                      <Input id="orcid" placeholder="0000-0000-0000-0000" />
-                    </div>
                   </div>
 
                   {/* Manuscript Details */}
