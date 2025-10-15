@@ -36,8 +36,10 @@ const Submit = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
+    const form = e.currentTarget; // Save form reference before async operations
+
     try {
-      const formData = new FormData(e.currentTarget);
+      const formData = new FormData(form);
       const manuscriptFile = formData.get('manuscript') as File;
 
       // Prepare submission data
@@ -78,7 +80,7 @@ const Submit = () => {
       });
 
       // Reset form
-      e.currentTarget.reset();
+      form.reset();
 
     } catch (error) {
       console.error('Submission error:', error);
