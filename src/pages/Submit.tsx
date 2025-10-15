@@ -13,22 +13,83 @@ import Footer from "@/components/Footer";
 import FloatingActions from "@/components/FloatingActions";
 import FloatingShapes from "@/components/FloatingShapes";
 
+// Replace this with your Google Apps Script Web App URL
+const SCRIPT_URL = 'YOUR_GOOGLE_SCRIPT_URL_HERE';
+
 const Submit = () => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const fileToBase64 = (file: File): Promise<string> => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        const base64 = (reader.result as string).split(',')[1];
+        resolve(base64);
+      };
+      reader.onerror = error => reject(error);
+    });
+  };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate submission
-    setTimeout(() => {
-      setIsSubmitting(false);
-      toast({
-        title: "Submission Received",
-        description: "Your manuscript has been successfully submitted. You will receive a confirmation email shortly.",
+    try {
+      const formData = new FormData(e.currentTarget);
+      const manuscriptFile = formData.get('manuscript') as File;
+
+      // Prepare submission data
+      const submissionData: any = {
+        authorName: `${formData.get('firstName')} ${formData.get('lastName')}`,
+        email: formData.get('email'),
+        phone: formData.get('phone'),
+        affiliation: formData.get('affiliation'),
+        title: formData.get('title'),
+        category: formData.get('category'),
+        abstract: formData.get('abstract'),
+        keywords: formData.get('keywords'),
+      };
+
+      // Convert manuscript file to base64
+      if (manuscriptFile && manuscriptFile.size > 0) {
+        const base64Data = await fileToBase64(manuscriptFile);
+        submissionData.manuscriptFile = {
+          name: manuscriptFile.name,
+          mimeType: manuscriptFile.type,
+          data: base64Data
+        };
+      }
+
+      // Send to Google Apps Script
+      await fetch(SCRIPT_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(submissionData),
+        mode: 'no-cors'
       });
-    }, 2000);
+
+      toast({
+        title: "Submission Successful!",
+        description: "Your manuscript has been submitted. You will receive a confirmation email shortly.",
+      });
+
+      // Reset form
+      e.currentTarget.reset();
+
+    } catch (error) {
+      console.error('Submission error:', error);
+      toast({
+        title: "Submission Error",
+        description: "There was an error submitting your manuscript. Please try again or contact editor.jbpar@gmail.com",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const categories = [
@@ -103,28 +164,28 @@ const Submit = () => {
                     <div className="grid md:grid-cols-2 gap-4">
                       <div>
                         <Label htmlFor="firstName">First Name *</Label>
-                        <Input id="firstName" required />
+                        <Input id="firstName" name="firstName" required />
                       </div>
                       <div>
                         <Label htmlFor="lastName">Last Name *</Label>
-                        <Input id="lastName" required />
+                        <Input id="lastName" name="lastName" required />
                       </div>
                     </div>
 
                     <div className="grid md:grid-cols-2 gap-4">
                       <div>
                         <Label htmlFor="email">Email *</Label>
-                        <Input id="email" type="email" required />
+                        <Input id="email" name="email" type="email" required />
                       </div>
                       <div>
                         <Label htmlFor="phone">Phone Number</Label>
-                        <Input id="phone" type="tel" />
+                        <Input id="phone" name="phone" type="tel" />
                       </div>
                     </div>
 
                     <div>
                       <Label htmlFor="affiliation">Institution/Affiliation *</Label>
-                      <Input id="affiliation" required />
+                      <Input id="affiliation" name="affiliation" required />
                     </div>
                   </div>
 
@@ -137,29 +198,31 @@ const Submit = () => {
 
                     <div>
                       <Label htmlFor="title">Article Title *</Label>
-                      <Input id="title" required />
+                      <Input id="title" name="title" required />
                     </div>
 
                     <div>
                       <Label htmlFor="category">Research Category *</Label>
-                      <Select required>
-                        <SelectTrigger>
-                          <SelectValue placeholder="Select a category" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          {categories.map((cat, index) => (
-                            <SelectItem key={index} value={cat}>
-                              {cat}
-                            </SelectItem>
-                          ))}
-                        </SelectContent>
-                      </Select>
+                      <select 
+                        id="category"
+                        name="category"
+                        className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                        required
+                      >
+                        <option value="">Select a category</option>
+                        {categories.map((cat, index) => (
+                          <option key={index} value={cat}>
+                            {cat}
+                          </option>
+                        ))}
+                      </select>
                     </div>
 
                     <div>
                       <Label htmlFor="abstract">Abstract (150-250 words) *</Label>
                       <Textarea 
-                        id="abstract" 
+                        id="abstract"
+                        name="abstract"
                         rows={6} 
                         required
                         placeholder="Provide a concise summary of your research"
@@ -169,7 +232,8 @@ const Submit = () => {
                     <div>
                       <Label htmlFor="keywords">Keywords (4-6 keywords, comma-separated) *</Label>
                       <Input 
-                        id="keywords" 
+                        id="keywords"
+                        name="keywords"
                         required
                         placeholder="e.g., innovation, leadership, digital transformation"
                       />
@@ -185,20 +249,20 @@ const Submit = () => {
 
                     <div>
                       <Label htmlFor="manuscript">Manuscript File (Word document) *</Label>
-                      <Input id="manuscript" type="file" accept=".doc,.docx" required />
+                      <Input id="manuscript" name="manuscript" type="file" accept=".doc,.docx" required />
                       <p className="text-sm text-muted-foreground mt-1">
-                        Maximum file size: 10MB
+                        Maximum file size: 50MB
                       </p>
                     </div>
 
                     <div>
                       <Label htmlFor="figures">Figures/Tables (Optional)</Label>
-                      <Input id="figures" type="file" multiple />
+                      <Input id="figures" name="figures" type="file" multiple />
                     </div>
 
                     <div>
                       <Label htmlFor="supplementary">Supplementary Materials (Optional)</Label>
-                      <Input id="supplementary" type="file" multiple />
+                      <Input id="supplementary" name="supplementary" type="file" multiple />
                     </div>
                   </div>
 
