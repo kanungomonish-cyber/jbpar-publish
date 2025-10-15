@@ -14,7 +14,7 @@ import FloatingActions from "@/components/FloatingActions";
 import FloatingShapes from "@/components/FloatingShapes";
 
 // Replace this with your Google Apps Script Web App URL
-const SCRIPT_URL = 'YOUR_GOOGLE_SCRIPT_URL_HERE';
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw221DsAyLhCdQwARqH6riOoFt49-QT6fhzw-FWeC6lzTmJoaLFE48mEuREjiRXlyq7/exec';
 
 const Submit = () => {
   const { toast } = useToast();
