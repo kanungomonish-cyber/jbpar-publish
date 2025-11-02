@@ -1,0 +1,52 @@
+[
+  {
+    "Name": "Dr. Stephanie Rocky Okolo",
+    "Designation": "Professor",
+    "Official Mail ID": "emailry@comlkena.org",
+    "Phone No": "+1254 214-0468",
+    "Organization Name": "Initiative for Cognitive Therapies and Mental Health (CTMH)/University of the People",
+    "Organization Address": "817 Snow Bird Dr., Harker Heights, Texas, USA",
+    "Country": "USA",
+    "Pincode": "76548"
+  },
+  {
+    "Name": "Jaka Vadnjal",
+    "Designation": "Professor",
+    "Official Mail ID": "jaka.vadnjal@emuni.ai",
+    "Phone No": "+38641630839",
+    "Organization Name": "Euro-Mediterranean University",
+    "Organization Address": "Kidričevo nabrežje 2, Piran Slovenia",
+    "Country": "Slovenia",
+    "Pincode": "6300"
+  },
+  {
+    "Name": "Arpita Soni",
+    "Designation": "Senior IEEE",
+    "Official Mail ID": "arpitasoni@ieee.org",
+    "Phone No": "6789759544",
+    "Organization Name": "IEEE",
+    "Organization Address": "Eudoxia Research Centre IEEE",
+    "Country": "USA",
+    "Pincode": "28027"
+  },
+  {
+    "Name": "Dr. Vijay Birchha",
+    "Designation": "Asst. Professor Senior Grade-1",
+    "Official Mail ID": "vijaybirchha@vtbhopal.ac.in",
+    "Phone No": "+919826065780",
+    "Organization Name": "VIT Bhopal University",
+    "Organization Address": "VIT Bhopal University, Bhopal-Indore Highway Kothrkaïm, Sehore Madriya Pradesh - 466114 India",
+    "Country": "India",
+    "Pincode": "466114"
+  },
+  {
+    "Name": "Dr. Diwakar Tripathi",
+    "Designation": "Assistant Professor (Grade-I)",
+    "Official Mail ID": "Diwakar.cse@nitjsr.ac.in",
+    "Phone No": "+919993335916",
+    "Organization Name": "National Institute of Technology Jamshedpur, Jharkhand, India",
+    "Organization Address": "Dept. of CSE, National Institute of Technology Jamshedpur, Adityapur, Jharkhand",
+    "Country": "India",
+    "Pincode": "832014"
+  }
+]
